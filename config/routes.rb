@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+
   devise_for :users
+
+  resources :topics
+
   get 'about' => 'welcome#about'
   get 'blocmarks' => 'welcome#index'
   root 'welcome#index'
