@@ -1,2 +1,15 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+  <h1 class="text-center">Welcome to Blocmarks!</h1>
+  <h4 class="text-center">A social bookmarking app that allows users to bookmark URLs via email, manage and share them with friends.</h4>
+  <p>
+    <% if user_signed_in? %>
+      <div class = "intro">
+        <%= link_to "My Blocmarks", topics_path, class: 'btn btn-primary' %>
+        <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-primary' %>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> or
+        <%= link_to "Sign In", user_session_path, class: 'btn btn-primary' %> today!
+      </div>
+    <% end %>
+  </p>
+</div>

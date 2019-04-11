@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :bookmark do
-    url { "MyString" }
-    topic { nil }
+    url Faker::Internet.url
+    topic
   end
 end
