@@ -8,12 +8,12 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new
+    @topic = current_user.topics.new(topic_params)
     @topic.title = params[:topic][:title]
 
     if @topic.save
       flash[:notice] = "Topic: \"#{@topic.title.capitalize}\" was saved successfully! :)"
-      redirect_to topics_path(:id)
+      redirect_to @topic
     else
       flash[:alert] = "There was an error saving your topic.  Please try again."
       render :new
@@ -57,6 +57,6 @@ class TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:title, :user)
+    params.require(:topic).permit(:title)
   end
 end

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe TopicsController, type: :controller do
+  let(:my_user) { create(:user, email: 'test@blocmarks.com', password: 'password') }
 
   before do
-    @user = create(:user)
-    @user.confirm
-    sign_in @user
+    my_user.confirm
+    sign_in my_user
   end
 
   describe "GET index" do
