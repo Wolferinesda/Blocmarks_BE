@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :topics
-  get "topics/:id/edit" => "topics#edit"
 
   get 'about' => 'welcome#about'
   get 'blocmarks' => 'welcome#index'
