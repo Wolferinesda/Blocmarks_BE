@@ -9,7 +9,6 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.new(topic_params)
-    @topic.title = params[:topic][:title]
 
     if @topic.save
       flash[:notice] = "Topic: \"#{@topic.title.capitalize}\" was saved successfully! :)"
