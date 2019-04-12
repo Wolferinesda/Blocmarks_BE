@@ -4,10 +4,8 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = Bookmark.new
-    @bookmark.url = params[:bookmark][:url]
     @topic = Topic.find(params[:topic_id])
-    @bookmark.topic = @topic
+    @bookmark = @topic.bookmarks.build(bookmark_params)
 
     if @bookmark.save
       flash[:notice] = "Bookmark was saved."
@@ -49,5 +47,9 @@ class BookmarksController < ApplicationController
        flash.now[:alert] = "There was an error deleting the bookmark."
        render :show
      end
+  end
+
+  def bookmark_params
+    params.require(:bookmark).permit(:url)
   end
 end
