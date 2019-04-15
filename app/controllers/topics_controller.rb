@@ -1,3 +1,4 @@
+# coding: utf-8
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
