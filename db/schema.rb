@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_04_10_212940) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookmarks", force: :cascade do |t|
     t.string "url"
     t.integer "topic_id"
