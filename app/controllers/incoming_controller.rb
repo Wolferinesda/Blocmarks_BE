@@ -11,7 +11,7 @@ class IncomingController < ApplicationController
     end
 
     if @topic.nil?
-      @topic = Topic.create!((title: params[:title], user: @user))
+      @topic = Topic.create!(title: params[:title], user: @user)
     end
 
     Bookmark.create!(
@@ -19,7 +19,7 @@ class IncomingController < ApplicationController
       topic: @topic
     )
 
+    head 200
   end
 
-  head 200
 end
