@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  end
+
   private
    def user_not_authorized
      flash[:warning] = "You are not authorized to perform this action."
      redirect_to root_path
    end
-   
-   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
-  end
 end
