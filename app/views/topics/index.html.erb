@@ -1,13 +1,24 @@
-<h1>All Topics <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %></h1>
-<% @topics.each do |topic| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to topic.title, topic %>
-        <div class="bookmark-box">
-          <p>Bookmark</p>
+<h1 class=text-center>All Topics <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %></h1>
+<br>
+<div class="media">
+  <div class="media-body">
+    <% @topics.each do |topic| %>
+        <h3 class="media-heading text-center">
+           <%= link_to topic.title, topic %>
+        </h3>
+        <% if topic.bookmarks.empty? %>
+           <p class="text-center"> No Bookmarks added yet. </p>
+        <% end %>
+       <div class="row">
+       <% topic.bookmarks.each do |bookmark| %>
+        <div class="col-sm-3">
+            <p> <%= render partial: 'bookmarks/thumbnail', locals: { bookmark: bookmark } %> </p>
         </div>
-      </h4>
-    </div>
+       <% end %>
+       </div>
+       <br>
+       <br>
+    <% end %>
   </div>
-<% end %>
+  <br>
+</div>

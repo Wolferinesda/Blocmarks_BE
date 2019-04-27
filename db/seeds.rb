@@ -17,7 +17,7 @@ users = User.all
 15.times do
   Topic.create!(
     user: users.sample,
-    title: Faker::String.random(5..12)
+    title: Faker::Superhero.name 
   )
 end
 topics = Topic.all
