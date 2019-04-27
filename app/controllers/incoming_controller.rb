@@ -11,11 +11,7 @@ class IncomingController < ApplicationController
     end
 
     if @topic.nil?
-<<<<<<< HEAD
-      @topic = Topic.create!((title: params[:title], user: @user))
-=======
       @topic = Topic.create!(title: params[:title], user: @user)
->>>>>>> user_authorization
     end
 
     Bookmark.create!(
