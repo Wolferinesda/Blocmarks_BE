@@ -11,14 +11,14 @@
         <% end %>
        <div class="row">
        <% topic.bookmarks.each do |bookmark| %>
-       <!-- <div class="flex-container"> -->
+       <div class="flex-container">
          <div class="col-sm-3">
            <p> <%= render partial: 'bookmarks/thumbnail', locals: { bookmark: bookmark } %> </p>
            <div>
              <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
            </div>
          </div>
-        <!-- </div> -->
+        </div>
        <% end %>
        </div>
        <br>

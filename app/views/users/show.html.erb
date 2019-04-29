@@ -1,0 +1,71 @@
+<br/>
+<div class="media">
+  <div class="media-body">
+    <div>
+      <h1 class="text-center">My Topics</h1>
+      <% if @user_topics.empty? %>
+         <p class="text-center"> No topics created yet. </p>
+      <% end %>
+      <% @user_topics.each do |topic| %>
+      <div class="col-sm-3">
+        <h3><%= link_to "#" + topic.title, topic %></h3>
+        <div class="row">
+          <% topic.bookmarks.each do |bookmark| %>
+              <p class="img-thumbnail text-center">
+                <%= link_to bookmark.url, topic_bookmark_path(topic, bookmark) %>
+              </p>
+              <div class="text-center">
+                <%= link_to "Remove", bookmark, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %></h1>
+              </div>
+              <br/>
+            </div>
+          <% end %>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      <% end %>
+    </div>
+    <br/>
+    <div>
+      <h1 class="text-center">Liked Blocmarks</h1>
+      <% if @liked_bookmarks.empty? %>
+         <p class="text-center"> No liked bookmarks added yet. </p>
+      <% end %>
+      <div class="row">
+        <% @liked_bookmarks.each do |like| %>
+          <div class="col-sm-3">
+            <p class="media-heading, img-thumbnail text-center">
+              <%= like.bookmark.url %>
+            </p>
+            <div class="text-center">
+              <%= render partial: 'likes/like', locals: { bookmark: like.bookmark } %>
+            </div>
+          </div>
+        <% end %>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h1 class="text-center">Created Blocmarks</h1>
+        <% if @user_bookmarks.empty? %>
+           <p class="text-center"> No bookmarks added yet. </p>
+        <% end %>
+        <div class="row">
+          <% @user_bookmarks.each do |bookmark| %>
+          <div class="col-sm-3">
+            <div>
+              <%= render partial: 'bookmarks/thumbnail', locals: { bookmark: bookmark } %>
+              <%= link_to "Delete Bookmark", bookmark, method: :delete, class: 'glyphicon glyphicon-remove-circle', data: { confirm: "Are you sure you want to delete this bookmark?" } %> <br>
+              <%= link_to "Edit Bookmark", edit_bookmark_path(bookmark), class: 'glyphicon glyphicon-pencil' %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
